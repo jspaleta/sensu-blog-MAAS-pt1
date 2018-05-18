@@ -6,23 +6,25 @@ Within you'll find the Sensu Core 1.4 configuration for a proxy-client based mon
 
 ## Provided Example Config
 ### test-client.json
-Basic client config for running client. This client will run check requests on behalf of all proxy-clients.
+Basic client config for running client. This client will run check requests on behalf of all proxy clients that meet proxy_requests requirements inside the example checks.
 
 ### http-proxy-request-simple.json
 Basic example of how to use proxy-requests check attribute with proxy-clients. 
 
-*Required proxy-client attributes: url   
-*Required proxy-client subscription: http-proxy-client   
-*Required proxu-client subscription: roundrobin:proxy-request
+* Required client subscription: roundrobin:proxy-request
+
+* Required proxy client attributes: url   
+* Required proxy client subscription: http-proxy-client   
 
 ### http-proxy-request-full.json
 More expressive proxy check using multiple optional proxy-client attributes
 
-*Required proxy-client attributes: url   
-*Required proxy-client subscription: http-proxy-client   
-*Required proxy-client subscription: roundrobin:proxy-request
+* Required client subscription: roundrobin:proxy-request
 
-*Suggested proxy-client attribute: handler
+* Required proxy client attributes: url   
+* Required proxy client subscription: http-proxy-client   
+
+* Suggested proxy-client attribute: handler
 
 ### http-proxy-slack.json
 configuration needed for http-proxy-slack_handler.json from sensu-plugins-slack
@@ -33,10 +35,17 @@ Please see the Slack API usage documentation for how to create a new incoming we
 ### http-proxy-slack_handler.json
 basic slack handler configuration using http-proxy-slack_handler.json from http-proxy-slack_handler.json
 
-## Proxy Client Management
+## Proxy Client Management Exampple
 
-### Proxy Client Creation
+### Example Proxy Client Creation
+```json
+curl -s -i -X POST -H \
+'Content-Type: application/json' \
+-d '{"name":"proxy_sensu.io", "address":"unknown", "subscriptions":["http-proxy-request"], "environment":"development", "handler":"http-proxy-slack", "url":"https://sensu.io"}' \
+http://127.0.0.1:4567/clients
+```
 
-### Proxy Client Deletion
-
-
+### Example Proxy Client Deletion
+```
+curl -s -i -X DELETE http://127.0.0.1:4567/clients/proxy_sensu.io
+```
