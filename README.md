@@ -21,3 +21,9 @@ More expressive proxy check using multiple optional proxy-client attributes
 *Required proxy-client subscription: roundrobin:proxy-request
 
 *Suggested proxy-client attribute: handler
+
+## http-proxy-slack.json
+configuration needed for http-proxy-slack_handler.json from sensu-plugins-slack
+
+## http-proxy-slack_handler.json
+basic slack handler configuration using http-proxy-slack_handler.json from http-proxy-slack_handler.json
