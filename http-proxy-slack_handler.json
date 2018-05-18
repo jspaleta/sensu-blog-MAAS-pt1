@@ -1,0 +1,9 @@
+{
+  "handlers": {
+    "http-proxy-slack": {
+      "type": "pipe",
+      "command": "handler-slack.rb -j http-proxy-slack"
+    }
+  }
+}
+

@@ -1,0 +1,7 @@
+{
+  "http-proxy-slack": {
+    "webhook_url": "<REPLACE WITH VALID SLACK WEBHOOK URL>",
+    "fields": ["test_field"]
+  }
+}
+

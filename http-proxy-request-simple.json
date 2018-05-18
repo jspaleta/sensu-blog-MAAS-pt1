@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "check-http-proxy-request-simple": {
+      "command": "check-http.rb -u :::url:::",
+      "subscribers": [
+        "roundrobin:proxy-request"
+      ],
+      "interval": 60,
+      "handler": "http-proxy-slack",
+      "proxy_requests": {
+        "client_attributes": {
+          "url": "eval: defined?(value)",
+          "subscriptions": "eval: value.include?('http-proxy-request')"
+        }
+      }
+    }
+  }
+}
+
